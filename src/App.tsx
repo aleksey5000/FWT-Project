@@ -23,7 +23,20 @@ function App() {
             </button>
           </div>
         </header>
-        <main></main>
+        <main>
+          <div className='filters'>
+            <input type="text" placeholder='Name' id = 'Name' />
+            <select>
+              <option defaultValue={undefined}>Author</option>
+            </select>
+            <select>
+              <option defaultValue={undefined}>Location</option>
+            </select>
+            <select>
+              <option defaultValue={undefined}>Created</option>
+            </select>
+          </div>
+        </main>
         <footer></footer>
       </div>
   )

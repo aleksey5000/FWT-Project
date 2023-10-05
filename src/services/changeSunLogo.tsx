@@ -8,6 +8,7 @@ const SunLogo = (state:boolean):JSX.Element => {
     theme = 'light'
     theme_rus = 'дневная'
   }
+  
   return <img src = {`../public/sun_${theme}.svg`} alt={`${theme_rus} тема`}/>
 }
 
