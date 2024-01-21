@@ -2,13 +2,24 @@ import './App.scss'
 import {useState} from 'react'
 import changeTheme from './services/changeTheme'
 import SunLogo from './services/changeSunLogo'
+import AuthorList from './components/AuthorList'
+import LocationList from './components/LocationList'
+import CreatedList from './components/CreatedList'
+import Pagination from './components/Pagination'
+import paintings from './services/paintings'
+import { QueryContext } from './services/queryContex'
 
 function App() {
+  const [sunState, setSunState] = useState(true)
   
-  let isLight:boolean = true
-  let [sunState, setSunState] = useState(isLight)
+  let nameField:string|undefined
+  const [,setName] = useState(nameField)
+  const [context,setContext] = useState(paintings)
+  let form:string
+  const inp = document.getElementById('Name')
 
   return (
+    <QueryContext.Provider value={{context,setContext}}>
       <div className='container'>
         <header>
           <div className='logo'>
@@ -16,8 +27,8 @@ function App() {
           </div>
           <div>
             <button onClick={() => {
-                let isLight = changeTheme(sunState)
-                setSunState(isLight)
+                const sun = changeTheme(sunState)
+                setSunState(sun)
               }}>
                 {SunLogo(sunState)} 
             </button>
@@ -25,20 +36,42 @@ function App() {
         </header>
         <main>
           <div className='filters'>
-            <input type="text" placeholder='Name' id = 'Name' />
-            <select>
-              <option defaultValue={undefined}>Author</option>
-            </select>
-            <select>
-              <option defaultValue={undefined}>Location</option>
-            </select>
-            <select>
-              <option defaultValue={undefined}>Created</option>
-            </select>
+            <div className='theFirstInput'>
+              <input 
+                type="text" 
+                placeholder='Name' 
+                id = 'Name' 
+                className = 'firstInput'
+                onBlur={(e) => {
+                  if (e.target.value){
+                    context.name_like = e.target.value
+                    setContext(context)
+                    setName(e.target.value)
+                  } else {
+                    context.name_like = ''
+                    setContext(context)
+                    setName(undefined) 
+                  }
+                }}
+                onChange = {(e) => {e.target.value?(form = e.target.value):(form='')}}
+                onKeyDown={(e) => {
+                  if (e.key == 'Enter'){
+                    setName(form)
+                    form?(context.name_like = form):(context.name_like = '')
+                    setContext(context)
+                    inp?.blur()
+                  }
+                }}
+              />
+            </div>
+            {AuthorList(sunState)}
+            {LocationList(sunState)}
+            {CreatedList(context)}
           </div>
+          {Pagination(sunState)}
         </main>
-        <footer></footer>
       </div>
+    </QueryContext.Provider>  
   )
 }
 
