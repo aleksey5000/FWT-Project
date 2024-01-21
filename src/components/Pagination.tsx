@@ -11,7 +11,8 @@ import axios from 'axios'
 
 const Pagination = (light:boolean):JSX.Element => {
   const [currentPage, setCurrentPage] = useState(1)
-  const [pages, setPages] = useState([1])
+  let pages:number[]=[1]
+  const [, setPages] = useState([1])
   const [lastPage,setLastPage]=useState(1)
   const {context} = useContext(QueryContext)
   const link = getLink(context)+`_page=${currentPage}&_limit=12`
@@ -22,9 +23,9 @@ const Pagination = (light:boolean):JSX.Element => {
   
   if (lastPage > 1 && pages.length == 1) {
     if (lastPage == 2) {
-      setPages([1,2])
+      pages = [1,2]
     } else {
-      setPages([1,2,3])
+      pages = [1,2,3]
     }
   }
 
