@@ -79,140 +79,16 @@ header{
       margin-right: 0px;
     }
   }
-  .authorList{
-    input{
-      border: none;
-      border-radius: 0px;
-      background-image: url('../public/Vector_for_light.svg');
-      background-repeat: no-repeat;
-      background-position: 95% 50%;
-    }
-    width:100%;
-    position: relative;
-    left: -10px;
-    background-color: white;
-    border: none;
-    border-top-right-radius: 0px;
-    border-top-left-radius: 0px;
-    overflow: auto;
-    &::-webkit-scrollbar{
-      width: 8px;
-    }
-    &::-webkit-scrollbar-track{
-      background-color: transparent;
-    }
-    &::-webkit-scrollbar-thumb {
-      background: #7B7B7B;
-      border-radius: 8px;
-    }
-  }
-  .locationList{
-    input{
-      border: none;
-      border-radius: 0px;
-      background-image: url('../public/Vector_for_light.svg');
-      background-repeat: no-repeat;
-      background-position: 95% 50%;
-    }
-    width:100%;
-    position: relative;
-    left: -10px;
-    border: none;
-    border-top-right-radius: 0px;
-    border-top-left-radius: 0px;
-    background-color: white;
-    overflow: auto;
-    &::-webkit-scrollbar{
-      width: 8px;
-    }
-    &::-webkit-scrollbar-track{
-      background-color: transparent;
-      width: 0px;
-    }
-    &::-webkit-scrollbar-thumb {
-      background: #7B7B7B;
-      border-radius: 8px;
-    }
-  }
+  @import "./scss/authorList.module.scss";
+  @import "./scss/locationList.module.scss";
   li{
     padding: 16px 15px;
     overflow: auto;
   }
-  .notFound{
-    display: relative;
-    left: -8px;
-    position: center;
-    color: red;
-    border-radius: 8px;
-    background-color: #fde8e8;
-    border-top-right-radius: 0px;
-    border-top-left-radius: 0px;
-    border: none;
-    text-align: center;
-    padding-top: 15px;
-    width: 100%;
-    height: 45px;
-    overflow: hidden;
-  }}
-  .wholeCreatedInput{
-    max-width: 265px;
-    position: relative;
-    border: 1px solid $clr;
-    border-radius: 8px;
-    height: 45px;
-    background-color: white;
-    padding: 0 15px 0 15px;
-    button{
-      text-align: left;
-      height: 45px;
-      width: 100%;
-      border: none;
-      outline: none; 
-      background-color: transparent;
-      cursor: default;
-      background-image: url('../public/Vector_for_light.svg');
-      background-repeat: no-repeat;
-      background-position: 97.2% 50%;
-    }
-    .inputs{
-      max-width: 100%;
-      max-height: 100%;
-      border: 1px solid $clr;
-      border-radius: 8px;
-      border: none;
-      margin: 20px 0;
-      display:none;
-      justify-content: center;
-      align-items: center;
-      input{
-        border-radius: 8px;
-        border: none;
-        background-color: rgb(239, 239, 239);
-        width: 43.57%;
-        height: 45px;
-      }
-      hr {
-        margin: 0 10px 0 10px;
-        height: 1px;
-        width: 12px;
-        background-color: $clr;
-      }
-    }
-    @media (max-width:1023px){
-      .inputs{
-        flex-direction: column;
-        margin: 10px 0 0 0;
-        height: 60.52%;
-        justify-content: space-between;
-        input{
-          width: 100%
-        }
-      }
-      hr{
-        display: none;
-      }
-    }
-  }
+  @import "./scss/notFound.module.scss";
+}
+@import "./scss/wholeCreatedInput.module.scss";
+    
 @media (max-width:767px){
   .filters{
     flex-direction: column;
@@ -245,59 +121,7 @@ header{
   position: absolute;
   top: 224px;
 }
-.blocks{
-  display: grid;
-  grid-template-rows: repeat(4,1fr);
-  grid-template-columns: repeat(3,1fr);
-  z-index: 0;
-  max-height: 1180px;
-  .picBlocks{
-    margin: 10px;
-    border-radius: 20px;
-    overflow: hidden;
-    max-width: 100%;
-    max-height: 100%;
-    &:nth-child(3n+1){
-      margin-left: 0px;
-      margin-right: 13px;
-    };
-    &:nth-child(3n+2){
-      margin-left: 7px;
-      margin-right: 7px;
-    };
-    &:nth-child(3n){
-      margin-left: 13px;
-      margin-right: 0px;
-    };
-    img{
-      height: 100%;
-      width: 100%;
-      z-index: 0;
-    }
-    div{
-      padding: 5px 0 0 15px;
-      position: relative;
-      background-color: rgba(255,255,255,0.75);
-      color: black;
-      z-index: 1;
-      width: 100%;
-      height: 145px;
-      bottom: 30px;
-      h1{
-        width: 100%;
-        font-size: 18px;
-        font-weight: 700;
-        line-height: 22px;
-      }
-      span{
-        font-weight: 500;
-      }
-      &:hover{
-        bottom: 145px;
-      }
-    }
-  }
-}
+@import "./scss/blocks.module.scss";
 @media (max-width:1365px){
   .blocks{
     max-width: 1120px;
@@ -350,43 +174,4 @@ header{
     }
   }
 }
-
-.pagination{
-min-width: 287px;
-margin-top:35px;
-display: flex;
-align-items: top;
-padding-bottom: 100px;
-button{
-  width: 41px;
-  height: 41px;
-  border-left: none; 
-  background-color: transparent;
-  &:first-child{
-    border-top-left-radius: 8px;
-    border-bottom-left-radius: 8px;
-  }
-  &:last-child{
-    border-top-left-radius: 8px;
-    border-bottom-left-radius: 8px;
-  }
-}
-  .twoArrLeft{
-    background-repeat: no-repeat;
-    background-position: center;  
-  }
-  .arrLeft{
-    background-repeat: no-repeat;
-    background-position: center;
-  }
-  .arrRight{
-    transform: rotate(180deg);
-    background-repeat: no-repeat;
-    background-position: center;
-  }
-  .twoArrRight{
-    transform: rotate(180deg);
-    background-repeat: no-repeat;
-    background-position: center;
-  }
-}
+@import "./scss/pagination.module.scss";

@@ -1,0 +1,28 @@
+.locationList{
+  input{
+    border: none;
+    border-radius: 0px;
+    background-image: url('../public/Vector_for_light.svg');
+    background-repeat: no-repeat;
+    background-position: 95% 50%;
+  }
+  width:100%;
+  position: relative;
+  left: -10px;
+  border: none;
+  border-top-right-radius: 0px;
+  border-top-left-radius: 0px;
+  background-color: white;
+  overflow: auto;
+  &::-webkit-scrollbar{
+    width: 8px;
+  }
+  &::-webkit-scrollbar-track{
+    background-color: transparent;
+    width: 0px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: #7B7B7B;
+    border-radius: 8px;
+  }
+}
