@@ -10,7 +10,7 @@ const Paintings = (link:string):JSX.Element => {
   const key = `${link}`
   const {data,isSuccess} = useQuery([key],()=> axios.get(link))
   const [paintings, setPaintings] = useState(data?.data)
-  
+
   useEffect(()=>{setPaintings(data?.data)},[isSuccess,link,data?.data])
   
   const queryClient = useQueryClient()
